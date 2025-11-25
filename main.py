@@ -4,14 +4,15 @@ import work
 
 app = Flask(__name__)
 # coming back to config once domains are decided on
-CORS(app, resources={r"/*": {"origins": "*"}})
+#CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["GET", "POST"])
 def calculate_and_view():
     res = request.get_json()
     number = int(res.get("number"))
     mod = int(res.get("mod"))
-    if number == None or mod == None:
+    if number is None or mod is None:
         return jsonify({"error": "Missing 'number' or 'mod'"}), 400
 
     inverse, works = work.find_mod_inverse(number, mod, True, False)
