@@ -97,6 +97,7 @@ def find_mod_inverse(A: int, B: int,
         equation_str = f'1 = {v1} * {c1} + {v2} * {c2}'
         counter_str = f'... ({counter})'
         works.append(f'{equation_str:<70}{counter_str:>10}')
+        works.append('')
     while quotients:
         # reassigning
         q = quotients.pop()
@@ -250,7 +251,8 @@ def euclidean(A: int, B: int, verbose: bool = False) -> tuple:
 if __name__ == "__main__":
     import doctest
     doctest.testmod(verbose=True)
-    x, m = find_mod_inverse(197, 2001, True)
-    x, m = find_mod_inverse(961748941, 982451653, True)
+    #x, m = find_mod_inverse(197, 2001, True)
+    #x, m = find_mod_inverse(961748941, 982451653, True)
+    x, m = find_mod_inverse(15, 26, True)
     for line in m:
         print(line)
